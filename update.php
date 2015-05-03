@@ -77,6 +77,7 @@ function bd($numbers){
     echo '<br>';echo '<br>';
     $k = 0;
     while($k<=$j) {
+        $a = date(time(),'H:i:s');
         mysql_query("UPDATE vk SET
 
                           name='$name_in[$k]',
@@ -86,7 +87,8 @@ function bd($numbers){
                           activity='$activity_in[$k]',
                           site='$site_in[$k]',
                           city='$city_in[$k]',
-                          country='$country_in[$k]'
+                          country='$country_in[$k]',
+                          time = '$a'
 
                           WHERE id_group='$id_in[$k]'
                  ");
