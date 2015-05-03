@@ -10,13 +10,13 @@ function removeslashes($string)
 }
 function bd($numbers){
 
-    echo $numbers;echo '<br>';
+    $numbers;
     $wall = file_get_contents("https://api.vk.com/method/groups.getById?group_ids=" . $numbers . "&fields=members_count,verified,activity,site,city,ban_info,country&v=5.0" . $token);
     $st = $wall;
     $j = 0;
     while (preg_match('/id/', $st, $m)) {
 
-        $st = stristr($st, 'id"');echo '<br>';
+        $st = stristr($st, 'id"');
         $pos = strpos($st, 'name"');
         $id_in[$j] = substr($st, 4, $pos - 6);
 
@@ -67,7 +67,7 @@ function bd($numbers){
             $site_in[$j] = substr($st, 7, $pos - 10);
         }
 
-        echo 'Для группы №'.$id_in[$j].' количество пользователей ='.$members_in[$j].'<br>';
+        //echo 'Для группы №'.$id_in[$j].' количество пользователей ='.$members_in[$j].'<br>';
 
         $j++;
 
@@ -88,12 +88,12 @@ function bd($numbers){
 
                           WHERE id_group='$id_in[$k]'
                  ");
-        echo '<br>';
         $k++;
-        echo 'Группа №' . $id_in[$k] . ' обновлена.<br>';
+        //echo 'Группа №' . $id_in[$k] . ' обновлена.<br>';
     }
 
 }
+$start = time();
 $group_numb = 200;
 $i = 0;
 
@@ -123,8 +123,10 @@ bd($numbers);
 
 
 mysql_close();
+$end = time();
 
-
-
+echo "Начальное время:".date($start,'H:i:s').'<br>';
+echo "Конечно время:".date($end,'H:i:s').'<br>';
+echo 'Время выполнения:'.date($end-$start,'H:i:s');
 ?>
 
