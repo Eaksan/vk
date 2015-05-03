@@ -49,6 +49,7 @@ function bd($numbers){
             $st = stristr($st, 'site"');
             $pos = strpos($st, 'city"');
             $site_in[$j] = substr($st, 7, $pos - 10);
+            $site_in[$j] = htmlentities($site_in[$j], ENT_QUOTES, 'UTF-8');
 
 
             $st = stristr($st, 'city"');
@@ -65,6 +66,7 @@ function bd($numbers){
             $st = stristr($st, 'site"');
             $pos = strpos($st, 'photo_50"');
             $site_in[$j] = substr($st, 7, $pos - 10);
+            $site_in[$j] = htmlentities($site_in[$j], ENT_QUOTES, 'UTF-8');
         }
 
         //echo 'Для группы №'.$id_in[$j].' количество пользователей ='.$members_in[$j].'<br>';
