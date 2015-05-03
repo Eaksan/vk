@@ -11,7 +11,7 @@ function removeslashes($string)
 function bd($numbers){
 
     $numbers;
-    $wall = file_get_contents("https://api.vk.com/method/groups.getById?group_ids=" . $numbers . "&fields=members_count,verified,activity,site,city,ban_info,country&v=5.0" . $token);
+    $wall = file_get_contents("https://api.vk.com/method/groups.getById?group_ids=" . $numbers . "&fields=members_count,verified,activity,site,city,ban_info,country&v=5.0");
     $st = $wall;
     $j = 0;
     while (preg_match('/id/', $st, $m)) {
